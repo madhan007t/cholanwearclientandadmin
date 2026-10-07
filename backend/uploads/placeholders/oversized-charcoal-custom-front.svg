@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#48484a"/><stop offset="1" stop-color="#28282a"/></linearGradient>
+<radialGradient id="f" cx=".5" cy=".4" r=".8"><stop offset="0" stop-color="#faf9f6"/><stop offset="1" stop-color="#e4e3e0"/></radialGradient></defs>
+<rect width="800" height="1000" fill="url(#f)"/>
+<ellipse cx="400" cy="930" rx="260" ry="22" fill="#00000018"/>
+<path d="M300 125 C340 155 460 155 500 125 L670 190 L770 420 L650 450 L610 340 L610 860 L190 860 L190 340 L150 450 L30 420 L130 190 Z" fill="url(#g)" stroke="#121214" stroke-width="2" stroke-linejoin="round"/>
+<path d="M300 120 C340 175 460 175 500 120 C470 138 330 138 300 120 Z" fill="#0d0d0f" opacity=".9"/>
+<path d="M300 120 C340 150 460 150 500 120" fill="none" stroke="#030305" stroke-width="5" stroke-linecap="round"/>
+<g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-dasharray="14 10"><rect x="290" y="330" width="220" height="220" rx="6"/></g><text x="400" y="425" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#FFFFFF" letter-spacing="6">YOUR</text><text x="400" y="470" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#FFFFFF" letter-spacing="6">DESIGN</text><text x="400" y="515" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#FFFFFF" letter-spacing="6">HERE</text>
+</svg>

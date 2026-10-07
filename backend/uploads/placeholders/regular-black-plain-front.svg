@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f1f1f"/><stop offset="1" stop-color="#000000"/></linearGradient>
+<radialGradient id="f" cx=".5" cy=".4" r=".8"><stop offset="0" stop-color="#faf9f6"/><stop offset="1" stop-color="#e4e3e0"/></radialGradient></defs>
+<rect width="800" height="1000" fill="url(#f)"/>
+<ellipse cx="400" cy="930" rx="260" ry="22" fill="#00000018"/>
+<path d="M300 120 C340 150 460 150 500 120 L640 175 L720 330 L625 370 L600 300 L600 840 L200 840 L200 300 L175 370 L80 330 L160 175 Z" fill="url(#g)" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+<path d="M300 120 C340 175 460 175 500 120 C470 138 330 138 300 120 Z" fill="#000000" opacity=".9"/>
+<path d="M300 120 C340 150 460 150 500 120" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+<text x="400" y="360" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#D2A24E" letter-spacing="9">CHOLAN WEAR</text>
+</svg>
