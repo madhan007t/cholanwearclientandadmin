@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 let memoryServer;
 
-export async function connectDB() {
+async function connect() {
   mongoose.set("strictQuery", true);
   let uri = env.mongoUri;
 
@@ -37,14 +37,31 @@ export async function connectDB() {
   }
 
   if (!uri) {
-    console.error(
-      "FATAL: MONGODB_URI is not set. See .env.example (or set USE_MEMORY_DB=true for local dev).",
+    throw new Error(
+      "MONGODB_URI is not set. See .env.example (or set USE_MEMORY_DB=true for local dev).",
     );
-    process.exit(1);
   }
 
-  await mongoose.connect(uri);
+  // Fail fast with the real reason (bad URI, IP not allow-listed...) instead of a vague buffering timeout.
+  await mongoose.connect(uri, { serverSelectionTimeoutMS: 8000 });
   console.log("[db] MongoDB connected");
+}
+
+let connecting = null;
+
+/**
+ * Idempotent: safe to call on every request. Serverless hosts (Vercel) import app.js directly and
+ * never run server.js, so the app itself must make sure a connection exists; it is reused while
+ * the function instance stays warm.
+ */
+export function connectDB() {
+  if (mongoose.connection.readyState === 1) return Promise.resolve();
+  if (!connecting) {
+    connecting = connect().finally(() => {
+      connecting = null;
+    });
+  }
+  return connecting;
 }
 
 export async function disconnectDB() {

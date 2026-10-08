@@ -7,6 +7,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import env from './config/env.js';
+import { connectDB } from './config/db.js';
 import routes from './routes/index.js';
 import { apiLimiter, errorHandler, notFound } from './middleware/index.js';
 
@@ -52,6 +53,16 @@ app.use(express.json({ limit: '100kb' }));
 app.use(cookieParser());
 
 app.use('/uploads', express.static(env.uploadDir, { maxAge: env.isProd ? '30d' : 0, index: false, dotfiles: 'deny' }));
+// Every API request waits for the database (a no-op once connected) - required on serverless hosts.
+app.use('/api', async (_req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error('[db] connection failed:', err.message);
+    res.status(503).json({ message: 'The store is temporarily unavailable. Please try again in a moment.' });
+  }
+});
 app.use('/api', apiLimiter, routes);
 app.use('/api', notFound);
 
