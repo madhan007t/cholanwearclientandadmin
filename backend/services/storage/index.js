@@ -1,10 +1,12 @@
 import env from '../../config/env.js';
 import localDriver from './localStorage.js';
+import cloudinaryDriver from './cloudinaryStorage.js';
 
-// To add Cloudinary / S3: create e.g. ./cloudinaryStorage.js exporting { save, remove }
-// returning absolute https URLs, register it here and set STORAGE_DRIVER=cloudinary.
+// local = disk (dev / a server with a persistent disk). cloudinary = hosts without one (Vercel).
+// To add S3: create ./s3Storage.js exporting { save, remove } returning absolute https URLs and register it here.
 const drivers = {
   local: localDriver,
+  cloudinary: cloudinaryDriver,
 };
 
 const storage = drivers[env.storageDriver];

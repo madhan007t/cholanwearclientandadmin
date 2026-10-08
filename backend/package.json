@@ -9,6 +9,7 @@
     "dev": "node --watch server.js",
     "seed": "node scripts/seed.js",
     "seed:admin": "node scripts/seedAdmin.js",
+    "migrate:images": "node scripts/migrateImages.js",
     "placeholders": "node scripts/generatePlaceholders.js",
     "test:e2e": "node scripts/e2e.js"
   },

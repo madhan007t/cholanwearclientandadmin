@@ -27,6 +27,11 @@ const env = {
   uploadDir: path.resolve(__dirname, '..', process.env.UPLOAD_DIR || 'uploads'),
   maxUploadMb: Number(process.env.MAX_UPLOAD_MB) || 5,
   storageDriver: process.env.STORAGE_DRIVER || 'local',
+  cloudinary: {
+    cloudName: process.env.CLOUDINARY_CLOUD_NAME || '',
+    apiKey: process.env.CLOUDINARY_API_KEY || '',
+    apiSecret: process.env.CLOUDINARY_API_SECRET || '',
+  },
   publicApiUrl: (process.env.PUBLIC_API_URL || '').replace(/\/$/, ''),
   serveFrontend: bool(process.env.SERVE_FRONTEND, false),
   frontendDist: path.resolve(__dirname, '..', '..', 'frontend', 'dist'),
