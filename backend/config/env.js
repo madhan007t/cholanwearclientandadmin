@@ -7,6 +7,8 @@ dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isProd = process.env.NODE_ENV === 'production';
 
+// Values pasted into a hosting dashboard often carry stray spaces or wrapping quotes.
+const clean = (v) => (v || '').trim().replace(/^(['"])(.*)\1$/, '$2');
 const bool = (v, d = false) => (v === undefined ? d : String(v).toLowerCase() === 'true');
 
 const env = {
@@ -28,9 +30,9 @@ const env = {
   maxUploadMb: Number(process.env.MAX_UPLOAD_MB) || 5,
   storageDriver: process.env.STORAGE_DRIVER || 'local',
   cloudinary: {
-    cloudName: process.env.CLOUDINARY_CLOUD_NAME || '',
-    apiKey: process.env.CLOUDINARY_API_KEY || '',
-    apiSecret: process.env.CLOUDINARY_API_SECRET || '',
+    cloudName: clean(process.env.CLOUDINARY_CLOUD_NAME),
+    apiKey: clean(process.env.CLOUDINARY_API_KEY),
+    apiSecret: clean(process.env.CLOUDINARY_API_SECRET),
   },
   publicApiUrl: (process.env.PUBLIC_API_URL || '').replace(/\/$/, ''),
   serveFrontend: bool(process.env.SERVE_FRONTEND, false),
